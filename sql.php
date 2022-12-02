@@ -1,16 +1,28 @@
 <?php
+class SQLConnection{
+    protected mysqli $__dblink;
 
-    $host = "220.132.162.109";
-    $port = "3306";
-    $dbname = "messageboard";
-    $dbuser = "jrong";
-    $dbpwd = "jrong0913";
-    $sql = mysqli_connect($host,$dbuser,$dbpwd,$dbname);
-    if($sql){
-        mysqli_query($sql,'SET NAMES uff8');
-            // echo "正確連接資料庫";
+    public function __construct()
+    {
+        $host = "220.132.162.109";
+        $dbname = "messageboard";
+        $dbuser = "Jrong";
+        $dbpwd = "Jrong-0913";
+        
+        try{
+            $this->__dblink = mysqli_connect($host,$dbuser,$dbpwd,$dbname);
+        }catch(Exception $e){
+            throw $e;
+        }
     }
-    else {
-        echo "不正確連接資料庫</br>" . mysqli_connect_error();
+}
+
+class AccountRepository extends SQLConnection{
+    public function getAllAccounts(){
+        $sql = "SELECT * FROM users";
+        $results = mysqli_query($this->__dblink, $sql);
+        $users = mysqli_fetch_all($results);
+        return $users;
     }
+}
 ?>
