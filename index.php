@@ -9,16 +9,17 @@
 <body>
     <?php 
         session_start();
-        if(isset($_SESSION["isLogin"])){
-            if($_SESSION["isLogin"]) {
-                require_once("./views/messageboard.php");
-            }else{
-                require_once("./views/login.php");  
-            }
-        }else{
-            $_SESSION["isLogin"]=false;
-            header("Location: http://localhost/messageboard");
+
+        function check_isLogin(){
+            return isset($_SESSION["acc"]);
         }
+        
+        if(check_isLogin()){
+            require_once("./views/messageboard.view.php");
+        }else{
+            require_once("./views/login.view.php");  
+        }
+        
     ?>
 </body>
 </html>
