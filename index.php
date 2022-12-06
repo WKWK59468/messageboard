@@ -16,7 +16,8 @@
                 require_once("./views/login.php");  
             }
         }else{
-            $_SESSION["isLogin"]=false; 
+            $_SESSION["isLogin"]=false;
+            header("Location: http://localhost/messageboard");
         }
     ?>
 </body>
