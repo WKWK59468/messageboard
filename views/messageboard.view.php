@@ -8,19 +8,28 @@
 <?php foreach($messages as $row){ ?>
 
     <tr>
-    <?php foreach($row as $value){ ?>
-
-        <td><?php echo $value ?></td>
-
+    <?php foreach($row as $key => $value){ ?>
+        <?php if($key != "m_id"){ ?>
+            <td><?php echo $value ?></td>
+        <?php } ?>
     <?php } ?>
+    <td><form action="./updatemessage.php" method="POST">
+        <input type="hidden" name="m_id" value="<?php echo $row["m_id"]?>">
+        <button>修改</button>
+        </form></td>
+
+    <td><form action="./deletemessage.php" method="POST">
+        <input type="hidden" name="m_id" value="<?php echo $row["m_id"]?>">
+        <button>刪除</button>
+        </form></td>
     </tr> 
 
 <?php } ?>
     
 </table>
 <br>
-<form action="" method="POST">
-    <textarea name="message" rows="8" cols="30"></textarea>
+<form action="./insertmessage.php" method="POST">
+    <textarea name="message" rows="5" cols="24"></textarea>
     <button type="submit">送出</button>
     <button type="reset">清除</button>
 </form>

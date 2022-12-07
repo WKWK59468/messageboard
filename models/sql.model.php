@@ -46,8 +46,24 @@ class MessagesRepository extends SQLConnection{
     }
 
     //新增一筆留言
-    public function addOneMessage($u_id,$message){
-        $sql = "INSERT INTO messages(message,u_id) value($message,$u_id)";
+    public function insertMessage($acc,$message){
+        $sql = "INSERT INTO messages(message,u_account) value($message,$acc);";
+        mysqli_query($this->__dblink, $sql);
+        $affect_rows = mysqli_affected_rows($this->__dbLink);
+        return $affect_rows==1;
+    }
+
+    //修改一筆資料
+    public function updateMessage($u_id,$message){
+        $sql = "UPDATE messages SET message='$message' WHERE u_id='$u_id';";
+        mysqli_query($this->__dblink, $sql);
+        $affect_rows = mysqli_affected_rows($this->__dbLink);
+        return $affect_rows==1;
+    }
+
+    //刪除一筆資料
+    public function deleteMessage($u_id){
+        $sql = "DELETE FROM messages WHERE u_id='$u_id';";
         mysqli_query($this->__dblink, $sql);
         $affect_rows = mysqli_affected_rows($this->__dbLink);
         return $affect_rows==1;
