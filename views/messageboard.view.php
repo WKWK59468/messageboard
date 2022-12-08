@@ -5,8 +5,13 @@
 ?>
 
 <table border="1">
+    <tr>
+        <th>訊息</th>
+        <th>留言時間</th>
+        <th>留言者</th>
+        <th colspan="2">編輯</th>
+    </tr>
 <?php foreach($messages as $row){ ?>
-
     <tr>
     <?php foreach($row as $key => $value){ ?>
         <?php if($key != "m_id"){ ?>
