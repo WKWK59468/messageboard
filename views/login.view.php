@@ -15,7 +15,7 @@
         echo "<span style='color: red;'>請輸入帳號密碼!</span>";
     }
     
-    if(isset($_SESSION["acc"])){
+    if(isset($_SESSION["u_id"])){
         header('Location: http://localhost/messageboard/');
     }
 ?>

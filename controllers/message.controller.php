@@ -8,25 +8,25 @@
             return $messages;
         }
 
-        public function insertMessage($acc,$message){
+        public function insertMessage($u_id,$message){
             $MessagesRepository = new MessagesRepository();
-            $messages = $MessagesRepository->insertMessage($acc,$message);
+            $res = $MessagesRepository->insertMessage($u_id,$message);
             
-            return $messages;
+            return $res;
         }
 
         public function updateMessage($u_id,$message){
             $MessagesRepository = new MessagesRepository();
-            $messages = $MessagesRepository->updateMessage($u_id,$message);
+            $res = $MessagesRepository->updateMessage($u_id,$message);
             
-            return $messages;
+            return $res;
         }
 
         public function deleteMessage($u_id){
             $MessagesRepository = new MessagesRepository();
-            $messages = $MessagesRepository->deleteMessage($u_id);
+            $res = $MessagesRepository->deleteMessage($u_id);
             
-            return $messages;
+            return $res;
         }
     }
 ?>

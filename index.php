@@ -11,7 +11,7 @@
         session_start();
 
         function check_isLogin(){
-            return isset($_SESSION["acc"]);
+            return isset($_SESSION["u_id"]);
         }
         
         if(check_isLogin()){

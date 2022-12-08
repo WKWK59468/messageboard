@@ -46,24 +46,26 @@ class MessagesRepository extends SQLConnection{
     }
 
     //新增一筆留言
-    public function insertMessage($acc,$message){
-        $sql = "INSERT INTO messages(message,u_account) value($message,$acc);";
-        mysqli_query($this->__dblink, $sql);
-        $affect_rows = mysqli_affected_rows($this->__dbLink);
-        return $affect_rows==1;
+    public function insertMessage($u_id,$message){
+        $sql = "INSERT INTO messages(u_id,message) value('$u_id','$message');";
+        if(mysqli_query($this->__dblink, $sql)){
+            return true;
+        }else{
+            return "Error: " && mysqli_error($this->__dblink);
+        }
     }
 
     //修改一筆資料
-    public function updateMessage($u_id,$message){
-        $sql = "UPDATE messages SET message='$message' WHERE u_id='$u_id';";
+    public function updateMessage($m_id,$message){
+        $sql = "UPDATE messages SET message='$message' WHERE m_id='$m_id';";
         mysqli_query($this->__dblink, $sql);
         $affect_rows = mysqli_affected_rows($this->__dbLink);
         return $affect_rows==1;
     }
 
     //刪除一筆資料
-    public function deleteMessage($u_id){
-        $sql = "DELETE FROM messages WHERE u_id='$u_id';";
+    public function deleteMessage($m_id){
+        $sql = "DELETE FROM messages WHERE m_id='$m_id';";
         mysqli_query($this->__dblink, $sql);
         $affect_rows = mysqli_affected_rows($this->__dbLink);
         return $affect_rows==1;
