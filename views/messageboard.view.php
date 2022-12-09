@@ -4,7 +4,7 @@
     $messages = $MessageController->getAllMessage();
 ?>
 
-<table border="1">
+<table>
     <tr>
         <th>訊息</th>
         <th>留言時間</th>
@@ -13,11 +13,18 @@
     </tr>
 <?php foreach($messages as $row){ ?>
     <tr>
-    <?php foreach($row as $key => $value){ ?>
-        <?php if($key != "m_id"){ ?>
-            <td><?php echo $value ?></td>
-        <?php } ?>
-    <?php } ?>
+        
+    <?php foreach($row as $key => $value){ 
+         if($key != "m_id"){
+            if($key != "u_id"){ 
+                if($key == "message" && $row["u_id"] == $_SESSION["u_id"]){?>
+                <td><textarea name="message"><?php echo $value ?></textarea></td>
+        <?php }else{ ?>
+                <td><?php echo $value ?></td>
+                <?php }
+            }
+        }
+    } ?>
     <td><form action="./updatemessage.php" method="POST">
         <input type="hidden" name="m_id" value="<?php echo $row["m_id"]?>">
         <button>修改</button>

@@ -39,7 +39,7 @@ class MessagesRepository extends SQLConnection{
 
     //取得所有留言
     public function getAllMessages(){
-        $sql = "SELECT messages.m_id, messages.message, messages.m_time, users.u_name FROM messages,users WHERE messages.u_id = users.u_id;";
+        $sql = "SELECT messages.m_id, messages.message, messages.m_time, users.u_id, users.u_name FROM messages,users WHERE messages.u_id = users.u_id;";
         $results = mysqli_query($this->__dblink, $sql);
         $messages = mysqli_fetch_all($results, MYSQLI_ASSOC);
         return $messages;
