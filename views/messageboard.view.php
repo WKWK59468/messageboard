@@ -4,7 +4,7 @@
     $messages = $MessageController->getAllMessage();
 ?>
 
-<table>
+<table border="1">
     <tr>
         <th>訊息</th>
         <th>留言時間</th>
@@ -18,14 +18,16 @@
          if($key != "m_id"){
             if($key != "u_id"){ 
                 if($key == "message" && $row["u_id"] == $_SESSION["u_id"]){?>
-                <td><textarea name="message"><?php echo $value ?></textarea></td>
+                <form action="./updatemessage.php" method="POST">
+                <td><textarea name="message" rows="3"><?php echo $value ?></textarea></td>
         <?php }else{ ?>
-                <td><?php echo $value ?></td>
+                <td><?php echo str_replace("\n","<br>",$value) ?></td>
                 <?php }
             }
         }
-    } ?>
-    <td><form action="./updatemessage.php" method="POST">
+    } 
+    if($row["u_id"] == $_SESSION["u_id"]) {?>
+    <td>
         <input type="hidden" name="m_id" value="<?php echo $row["m_id"]?>">
         <button>修改</button>
         </form></td>
@@ -34,11 +36,17 @@
         <input type="hidden" name="m_id" value="<?php echo $row["m_id"]?>">
         <button>刪除</button>
         </form></td>
-    </tr> 
+        </tr>
+<?php }else{ ?>
+    <td colspan="2"></td>
+    </tr>
+<?php } 
+} ?>
 
-<?php } ?>
-    
+ 
 </table>
+
+<table>
 <br>
 <form action="./insertmessage.php" method="POST">
     <textarea name="message" rows="5" cols="24"></textarea>

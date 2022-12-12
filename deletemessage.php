@@ -1,3 +1,9 @@
 <?php
-    echo $_POST["m_id"];
+    require_once("./controllers/message.controller.php");
+    session_start();
+    $u_id = $_SESSION["u_id"];
+    $m_id =  $_POST["m_id"];
+    $MessagesController = new MessageController();
+    $deletemessage = $MessagesController->deleteMessage($m_id);
+    header('Location: http://localhost/messageboard/');
 ?>
