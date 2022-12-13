@@ -5,5 +5,5 @@
     $message =  $_POST["message"];
     $MessagesController = new MessageController();
     $insertmessage = $MessagesController->insertMessage($u_id,$message);
-    header('Location: http://localhost/messageboard/');
+    header("Location: http://" . $_SERVER['HTTP_HOST'] . "/messageboard/");
 ?>
