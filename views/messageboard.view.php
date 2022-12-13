@@ -11,7 +11,9 @@
         <th>留言者</th>
         <th colspan="2">編輯</th>
     </tr>
-<?php foreach($messages as $row){ ?>
+<?php 
+    if($messages){
+        foreach($messages as $row){ ?>
     <tr>
         
     <?php foreach($row as $key => $value){ 
@@ -40,8 +42,13 @@
 <?php }else{ ?>
     <td colspan="2"></td>
     </tr>
-<?php } 
-} ?>
+<?php } } 
+
+    }else{ ?>
+        <tr>
+            <td colspan="4">"尚無留言!"</td>
+        </tr>
+    <?php }?>
 
  
 </table>

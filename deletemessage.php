@@ -4,6 +4,6 @@
     $u_id = $_SESSION["u_id"];
     $m_id =  $_POST["m_id"];
     $MessagesController = new MessageController();
-    $deletemessage = $MessagesController->deleteMessage($m_id);
+    $deletemessage = $MessagesController->deleteMessage($u_id, $m_id);
     header('Location: http://localhost/messageboard/');
 ?>

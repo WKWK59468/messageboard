@@ -56,19 +56,23 @@ class MessagesRepository extends SQLConnection{
     }
 
     //修改一筆資料
-    public function updateMessage($m_id,$message){
-        $sql = "UPDATE messages SET message='$message' WHERE m_id='$m_id';";
-        mysqli_query($this->__dblink, $sql);
-        $affect_rows = mysqli_affected_rows($this->__dbLink);
-        return $affect_rows==1;
+    public function updateMessage($u_id, $m_id, $message){
+        $sql = "UPDATE messages SET message='$message' WHERE m_id='$m_id' AND u_id = '$u_id';";
+        if(mysqli_query($this->__dblink, $sql)){
+            return true;
+        }else{
+            return "Error: " && mysqli_error($this->__dblink);
+        }
     }
 
     //刪除一筆資料
-    public function deleteMessage($m_id){
-        $sql = "DELETE FROM messages WHERE m_id='$m_id';";
-        mysqli_query($this->__dblink, $sql);
-        $affect_rows = mysqli_affected_rows($this->__dbLink);
-        return $affect_rows==1;
+    public function deleteMessage($u_id, $m_id){
+        $sql = "DELETE FROM messages WHERE m_id='$m_id' AND u_id='$u_id';";
+        if(mysqli_query($this->__dblink, $sql)){
+            return true;
+        }else{
+            return "Error: " && mysqli_error($this->__dblink);
+        }
     }
 }
 ?>
