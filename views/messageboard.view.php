@@ -21,7 +21,7 @@
             if($key != "u_id"){ 
                 if($key == "message" && $row["u_id"] == $_SESSION["u_id"]){?>
                 <form action="./updatemessage.php" method="POST">
-                <td><textarea name="message" rows="3"><?php echo $value ?></textarea></td>
+                <td><textarea name="message" rows="4"><?php echo $value ?></textarea></td>
         <?php }else{ ?>
                 <td><?php echo str_replace("\n","<br>",$value) ?></td>
                 <?php }
@@ -56,7 +56,7 @@
 <table>
 <br>
 <form action="./insertmessage.php" method="POST">
-    <textarea name="message" rows="5" cols="24"></textarea>
+    <textarea name="message" rows="4" cols="24"></textarea>
     <button type="submit">送出</button>
     <button type="reset">清除</button>
 </form>
