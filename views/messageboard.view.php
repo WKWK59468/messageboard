@@ -17,30 +17,20 @@
     <tr>
         
     <?php foreach($row as $key => $value){ 
-         if($key != "m_id"){
-            if($key != "u_id"){ 
-                if($key == "message" && $row["u_id"] == $_SESSION["u_id"]){?>
-                <form action="./updatemessage.php" method="POST">
-                <td><textarea name="message" rows="4" cols="50%"><?php echo $value ?></textarea></td>
-        <?php }else{ ?>
+        if($key != "m_id"){
+            if($key != "u_id"){ ?>
                 <td><?php echo str_replace("\n","<br>",$value) ?></td>
                 <?php }
-            }
         }
     } 
     if($row["u_id"] == $_SESSION["u_id"]) {?>
-    <td>
-        <input type="hidden" name="m_id" value="<?php echo $row["m_id"]?>">
-        <button>修改</button>
+        <td><form action="./edit.php" method="POST">
+            <input type="hidden" name="u_id" value="<?php echo $_SESSION["u_id"]?>">
+            <button>編輯</button>
         </form></td>
-
-    <td><form action="./deletemessage.php" method="POST">
-        <input type="hidden" name="m_id" value="<?php echo $row["m_id"]?>">
-        <button>刪除</button>
-        </form></td>
-        </tr>
+    </tr>
 <?php }else{ ?>
-    <td colspan="2"></td>
+        <td></td>
     </tr>
 <?php } } 
 
@@ -53,7 +43,6 @@
  
 </table>
 
-<table>
 <br>
 <form action="./insertmessage.php" method="POST">
     <textarea name="message" rows="4" cols="24"></textarea>
