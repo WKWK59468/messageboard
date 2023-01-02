@@ -11,7 +11,7 @@
         session_start();
         require_once("./controllers/message.controller.php");
         $MessageController = new MessageController();
-        $messages = $MessageController->getAllMessage();
+        $messages = $MessageController->getMessageByUser($_SESSION["u_id"],$_POST["m_id"]);
     ?>
     <form action="./updatemessage.php" method="POST">
     <table border="1">

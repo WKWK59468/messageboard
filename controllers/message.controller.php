@@ -8,6 +8,13 @@
             return $messages;
         }
 
+        public function getMessageByUser($u_id, $m_id){
+            $MessagesRepository = new MessagesRepository();
+            $messages = $MessagesRepository->getMessagesByUser($u_id, $m_id);
+            
+            return $messages;
+        }
+
         public function insertMessage($u_id, $message){
             $MessagesRepository = new MessagesRepository();
             $res = $MessagesRepository->insertMessage($u_id, $message);
