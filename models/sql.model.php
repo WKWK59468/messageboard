@@ -30,7 +30,7 @@ class UsersRepository extends SQLConnection{
     public function addOneUser($name,$account,$password){
         $sql = "INSERT INTO users(name,account,password) value($name,$account,$password)";
         mysqli_query($this->__dblink, $sql);
-        $affect_rows = mysqli_affected_rows($this->__dbLink);
+        $affect_rows = mysqli_affected_rows($this->__dblink);
         return $affect_rows==1;
     }
 }
