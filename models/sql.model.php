@@ -30,7 +30,7 @@ class UsersRepository extends SQLConnection{
     public function addOneUser($name,$account,$password){
         $sql = "INSERT INTO users(name,account,password) value($name,$account,$password)";
         mysqli_query($this->__dblink, $sql);
-        $affect_rows = mysqli_affected_rows($this->__dbLink);
+        $affect_rows = mysqli_affected_rows($this->__dblink);
         return $affect_rows==1;
     }
 }
@@ -40,6 +40,14 @@ class MessagesRepository extends SQLConnection{
     //取得所有留言
     public function getAllMessages(){
         $sql = "SELECT messages.m_id, messages.message, messages.m_time, users.u_id, users.u_name FROM messages,users WHERE messages.u_id = users.u_id;";
+        $results = mysqli_query($this->__dblink, $sql);
+        $messages = mysqli_fetch_all($results, MYSQLI_ASSOC);
+        return $messages;
+    }
+
+    //取得所有留言
+    public function getMessagesByUser($u_id, $m_id){
+        $sql = "SELECT messages.m_id, messages.message, messages.m_time, users.u_id, users.u_name FROM messages,users WHERE messages.u_id = users.u_id AND users.u_id='$u_id' AND messages.m_id='$m_id';";
         $results = mysqli_query($this->__dblink, $sql);
         $messages = mysqli_fetch_all($results, MYSQLI_ASSOC);
         return $messages;

@@ -25,7 +25,7 @@
     } 
     if($row["u_id"] == $_SESSION["u_id"]) {?>
         <td><form action="./edit.php" method="POST">
-            <input type="hidden" name="u_id" value="<?php echo $_SESSION["u_id"]?>">
+            <input type="hidden" name="m_id" value="<?php echo $row["m_id"]?>">
             <button>編輯</button>
         </form></td>
     </tr>
