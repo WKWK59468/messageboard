@@ -5,5 +5,5 @@
     $m_id =  $_POST["m_id"];
     $MessagesController = new MessageController();
     $deletemessage = $MessagesController->deleteMessage($u_id, $m_id);
-    header("Location: http://" . $_SERVER['HTTP_HOST'] . "/messageboard/");
+    header("Location: http://" . $_SERVER['HTTP_HOST'] . "/messageboard_exam/");
 ?>

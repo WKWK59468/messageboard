@@ -16,7 +16,7 @@
     }
     
     if(isset($_SESSION["u_id"])){
-        header("Location: http://" . $_SERVER['HTTP_HOST'] . "/messageboard/");
+        header("Location: http://" . $_SERVER['HTTP_HOST'] . "/messageboard_exam/");
     }
 ?>
 
