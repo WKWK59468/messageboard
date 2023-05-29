@@ -4,7 +4,7 @@ class SQLConnection{
 
     public function __construct()
     {
-        $host = "220.132.162.109";
+        $host = "220.132.187.240";
         $dbname = "messageboard";
         $dbuser = "Jrong";
         $dbpwd = "Jrong-0913";
